@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        function deleteuser(data) {
+            //alert(data);
+
+            window.location.href = '/del?id='+data;
+        }
+
+        function edituser(data1,data2,data3,data4,data5) {
+            //alert("id="+data1);
+            //alert("name="+data2);
+            window.location.href = '/edi?id='+data1+'&name='+data2+'&password='+data3+'&mobile='+data4+'&role='+data5;
+            //window.location.href = '/show600?name='+data;
+        }
+    </script>
+</head>
+<body>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td width="8" background="/tab/images/tab_12.gif">&nbsp;</td>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+            <tr>
+                <td width="3%" height="22" background="images/bg.gif" bgcolor="#FFFFFF"><div align="center">
+                    <input type="checkbox" name="checkbox" value="checkbox" />
+                </div></td>
+                <td width="3%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></td>
+                <td width="8%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户名</span></div></td>
+                <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户密码</span></div></td>
+                <td width="13%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">手机号码</span></div></td>
+                <td width="16%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户地址</span></div></td>
+                <td width="13%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户邮箱</span></div></td>
+                <td width="8%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户身份</span></div></td>
+                <td width="15%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+            </tr>
+
+
+
+
+
+            <!--/*@thymesVar id="userslist" type=""*/-->
+            <tr th:each="emp : ${userslist}">
+                <td height="20" bgcolor="#FFFFFF"><div align="center">
+                    <input type="checkbox" name="checkbox3" value="checkbox" />
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
+                    <div align="center"><!--/*@thymesVar id="id" type=""*/-->
+                        <p  th:id="'idid'+${emp.id}" th:text="${emp.id}">12</p></div>
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p  th:text="${emp.nickname}">海<p/></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.password}">12</p></span></div></td>
+                <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.mobile}">18</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.address}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.mail}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.role}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF">
+                    <div align="center">
+                            <span class="STYLE4">
+                            <img src="/tab/images/edt.gif" width="16" height="16" />
+                            <input  type="button" value="编辑" th:onclick="edituser([[${emp.id}]],[[${emp.nickname}]],[[${emp.password}]],[[${emp.mobile}]],[[${emp.role}]]);" />&nbsp; &nbsp;
+                            <img src="/tab/images/del.gif" width="16" height="16" />
+                            <input  type="button" value="删除" th:onclick="deleteuser([[${emp.id}]]);" />
+                            </span>
+                    </div>
+                </td>
+            </tr>
+
+
+        </table></td>
+        <td width="8" background="/tab/images/tab_15.gif">&nbsp;</td>
+    </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

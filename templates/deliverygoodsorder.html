@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表信息</title>
+
+</head>
+<body>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="8" background="/tab/images/tab_12.gif">&nbsp;</td>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+            <tr>
+                <td width="3%" height="22" background="images/bg.gif" bgcolor="#FFFFFF"><div align="center">
+                    <input type="checkbox" name="checkbox" value="checkbox" />
+                </div></td>
+                <td width="4%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">订单ID</span></div></td>
+                <td width="12%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品名称</span></div></td>
+                <td width="6%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">订单价格(元）</span></div></td>
+                <td width="12%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">客人名称</span></div></td>
+                <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">手机号</span></div></td>
+                <td width="20%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">收货地址</span></div></td>
+                <td width="12%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">邮箱</span></div></td>
+                <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">下单时间</span></div></td>
+                <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">发货时间</span></div></td>
+            </tr>
+
+
+
+
+
+            <tr th:each="emp : ${goodsorderlist}">
+                <td height="20" bgcolor="#FFFFFF"><div align="center">
+                    <input type="checkbox" name="checkbox3" value="checkbox" />
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
+                    <div align="center"><!--/*@thymesVar id="id" type=""*/-->
+                        <p  th:id="'idid'+${emp.orderid}" th:text="${emp.orderid}">12</p></div>
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p  th:text="${emp.goodsname}">海<p/></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.orderprice}">12</p></span></div></td>
+                <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.customername}">18</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.mobile}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.address}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.mail}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.ordertime}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.deliverytime}">1453</p></span></div></td>
+
+            </tr>
+
+
+        </table></td>
+        <td width="8" background="/tab/images/tab_15.gif">&nbsp;</td>
+    </tr>
+</table>
+
+
+</body>
+</html>

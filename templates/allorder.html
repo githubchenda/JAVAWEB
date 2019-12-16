@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+<table>
+    <tr>
+        <th>订单编号</th>
+        <th>商品名称</th>
+        <th>商品销量</th>
+        <th>商品价格</th>
+        <th>提交时间</th>
+    </tr>
+
+
+    <tr th:each="emp : ${orderslist}">
+        <td th:text="${emp.orderid}">1</td>
+        <td th:text="${emp.goodsname}">海</td>
+        <td th:text="${emp.goodsnum}">18</td>
+        <td th:text="${emp.goodsprice}">18</td>
+        <td th:text="${emp.orderdate}">18</td>
+    </tr>
+</table>
+/*@thymesVar id="orderslis" type="java"*/-->
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="8" background="/tab/images/tab_12.gif">&nbsp;</td>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+            <tr>
+                <td width="3%" height="22" background="images/bg.gif" bgcolor="#FFFFFF"><div align="center">
+                    <input type="checkbox" name="checkbox" value="checkbox" />
+                </div></td>
+                <td width="3%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">订单编号</span></div></td>
+                <td width="12%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品名称</span></div></td>
+                <td width="14%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品销量</span></div></td>
+                <td width="18%" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品价格</span></div></td>
+                <td width="23%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">提交时间</span></div></td>
+                <td width="15%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+            </tr>
+
+
+
+
+            <!--/*@thymesVar id="userslist" type=""*/-->
+            <tr th:each="emp : ${orderslist}">
+                <td height="20" bgcolor="#FFFFFF"><div align="center">
+                    <input type="checkbox" name="checkbox3" value="checkbox" />
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
+                    <div align="center"><!--/*@thymesVar id="id" type=""*/-->
+                        <p  th:id="'idid'+${emp.orderid}" th:text="${emp.orderid}">12</p></div>
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p  th:text="${emp.goodsname}">海<p/></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.goodsnum}">12</p></span></div></td>
+                <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.goodsprice}">18</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.orderdate}">1453</p></span></div></td>
+
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE4"><img src="/tab/images/edt.gif" width="16" height="16" />编辑&nbsp; &nbsp;<img src="/tab/images/del.gif" width="16" height="16" />删除</span></div></td>
+
+            </tr>
+        </table></td>
+        <td width="8" background="/tab/images/tab_15.gif">&nbsp;</td>
+    </tr>
+</table>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户更新成功</title>
+    <link href="/css/show.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script>
+        //alert("删除成功");
+        //var linkid=[[${id}]];
+        alert("个人信息修改成功");
+        self.location=document.referrer;
+        //window.location.href = '/show300?name=boss&password=123';
+    </script>
+</head>
+<body>
+
+
+<!--/*@thymesVar id="userid" type="java"*/-->
+<p th:text="'用户ID：' + ${fuserid}"></p>
+
+<!--/*@thymesVar id="username" type="java"*/-->
+<p th:text="'用户姓名：' + ${fusername}"></p>
+<!--/*@thymesVar id="userpassword" type="java"*/-->
+<p th:text="'用户姓名：' + ${fuserpassword}"></p>
+<!--/*@thymesVar id="usermobile" type="java"*/-->
+<p th:text="'用户姓名：' + ${fusermobile}"></p>
+<!--/*@thymesVar id="userrole" type="java"*/-->
+<p th:text="'用户姓名：' + ${fuserrole}"></p>
+
+
+</body>
+</html>

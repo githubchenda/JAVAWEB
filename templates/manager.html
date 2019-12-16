@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>淘淘商城后台系统</title>
+    <link href="/css/listcss.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+    <script>
+        var  highlightcolor='#c1ebff';
+        //此处clickcolor只能用win系统颜色代码才能成功,如果用#xxxxxx的代码就不行,还没搞清楚为什么:(
+        var  clickcolor='#51b2f6';
+        function  changeto(){
+            source=event.srcElement;
+            if  (source.tagName=="TR"||source.tagName=="TABLE")
+                return;
+            while(source.tagName!="TD")
+                source=source.parentElement;
+            source=source.parentElement;
+            cs  =  source.children;
+//alert(cs.length);
+            if  (cs[1].style.backgroundColor!=highlightcolor&&source.id!="nc"&&cs[1].style.backgroundColor!=clickcolor)
+                for(i=0;i<cs.length;i++){
+                    cs[i].style.backgroundColor=highlightcolor;
+                }
+        }
+
+        function  changeback(){
+            if  (event.fromElement.contains(event.toElement)||source.contains(event.toElement)||source.id=="nc")
+                return
+            if  (event.toElement!=source&&cs[1].style.backgroundColor!=clickcolor)
+//source.style.backgroundColor=originalcolor
+                for(i=0;i<cs.length;i++){
+                    cs[i].style.backgroundColor="";
+                }
+        }
+
+        function  clickto(){
+            source=event.srcElement;
+            if  (source.tagName=="TR"||source.tagName=="TABLE")
+                return;
+            while(source.tagName!="TD")
+                source=source.parentElement;
+            source=source.parentElement;
+            cs  =  source.children;
+//alert(cs.length);
+            if  (cs[1].style.backgroundColor!=clickcolor&&source.id!="nc")
+                for(i=0;i<cs.length;i++){
+                    cs[i].style.backgroundColor=clickcolor;
+                }
+            else
+                for(i=0;i<cs.length;i++){
+                    cs[i].style.backgroundColor="";
+                }
+        }
+    </script>
+
+
+
+    <script type="text/javascript">
+        function deleteuser(data) {
+            //alert(data);
+
+            window.location.href = '/del?id='+data;
+        }
+
+        function edituser(data1,data2,data3,data4,data5,data6,data7) {
+            //alert("id="+data1);
+            //alert("name="+data2);
+            window.location.href = '/edi?id='+data1+'&name='+data2+'&password='+data3+'&mobile='+data4+'&role='+data5+'&address='+data6+'&mail='+data7;
+            //window.location.href = '/show600?name='+data;
+        }
+    </script>
+
+    <script>
+        function changePage(pagePath) {
+            const rightContent = $("#right-contentt");
+            rightContent.empty();
+            rightContent.load(pagePath);
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td height="70" background="images/main_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td height="24"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="270" height="24" background="../images/main_03.gif">&nbsp;</td>
+                        <td width="505" background="../images/main_04.gif">&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td width="21"><img src="../images/main_07.gif" width="21" height="24"></td>
+                    </tr>
+                </table></td>
+            </tr>
+            <tr>
+                <td height="38"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="270" height="38" background="images/2.png">&nbsp;</td>
+                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="77%" height="25" valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+
+                                        <td width="26"><div align="center"><img src="images/main_21.gif" width="26" height="19"></div></td>
+                                        <td width="50"><div align="center"><a href="login.html"><img src="images/main_20.gif" width="48" height="19"></a></div></td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                </table></td>
+                                <td width="220" valign="bottom"  nowrap="nowrap"><div align="right"><span style="color:white"> 今天是：2019年12月6日</div></td>
+                            </tr>
+                        </table></td>
+                        <td width="21"><img src="images/main_11.gif" width="21" height="38"></td>
+                    </tr>
+                </table></td>
+            </tr>
+            <tr>
+                <td height="8" style=" line-height:8px;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="270" background="images/main_29.gif" style=" line-height:8px;">&nbsp;</td>
+                        <td width="505" background="images/main_30.gif" style=" line-height:8px;">&nbsp;</td>
+                        <td style=" line-height:8px;">&nbsp;</td>
+                        <td width="21" style=" line-height:8px;"><img src="images/main_31.gif" width="21" height="8"></td>
+                    </tr>
+                </table></td>
+            </tr>
+        </table></td>
+    </tr>
+    <tr>
+        <td height="28" background="images/main_36.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="177" height="28" background="images/main_32.gif" style="background-repeat: no-repeat"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="20%"  height="22">&nbsp;</td>
+                        <td width="59%" valign="bottom"><div align="center" class="STYLE1"><!--/*@thymesVar id="uname" type="java"*/-->
+                            <p th:text="${uname}"/></p></div></td>
+                        <td width="21%">&nbsp;</td>
+                    </tr>
+                </table></td>
+                <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                </table></td>
+                <td width="21"><img src="images/main_37.gif" width="21" height="28" style="background-repeat: no-repeat"></td>
+            </tr>
+        </table></td>
+    </tr>
+</table>
+
+
+
+
+<!--用户表单部分，实现了表单的查改删-->
+<div  style="width:100%;">
+    <div  style="width:87%;float:right;">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" th:fragment="tablelist">
+            <tr>
+                <td height="30" background="/tab/images/tab_05.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="12" height="30"><img src="/tab/images/tab_03.gif" width="12" height="30" /></td>
+                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="46%" valign="middle"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td width="5%"><div align="center"><img src="/tab/images/tb.gif" width="16" height="16" /></div></td>
+                                        <td width="95%" class="STYLE1"><span class="STYLE3">你好：</span>管理员</td>
+                                    </tr>
+                                </table></td>
+                                <td width="54%"><table border="0" align="right" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="60"><table width="87%" border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="STYLE1"><div align="center">
+                                                    <input type="checkbox" name="checkbox62" value="checkbox" />
+                                                </div></td>
+                                                <td class="STYLE1"><div align="center">全选</div></td>
+                                            </tr>
+                                        </table></td>
+                                        <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="STYLE1"><div align="center"><img src="/tab/images/22.gif" width="14" height="14" /></div></td>
+                                                <td class="STYLE1"><div align="center">新增</div></td>
+                                            </tr>
+                                        </table></td>
+                                        <td width="60"><table width="90%" border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="STYLE1"><div align="center"><img src="/tab/images/33.gif" width="14" height="14" /></div></td>
+                                                <td class="STYLE1"><div align="center">修改</div></td>
+                                            </tr>
+                                        </table></td>
+                                        <td width="52"><table width="88%" border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="STYLE1"><div align="center"><img src="/tab/images/11.gif" width="14" height="14" /></div></td>
+                                                <td class="STYLE1"><div align="center">删除</div></td>
+                                            </tr>
+                                        </table></td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                        </table></td>
+
+                    </tr>
+                </table></td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div id="right-contentt">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0"  >
+                            <tr>
+                                <td width="8" background="/tab/images/tab_12.gif">&nbsp;</td>
+                                <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+                                    <tr>
+                                        <td width="3%" height="22" background="images/bg.gif" bgcolor="#FFFFFF"><div align="center">
+                                            <input type="checkbox" name="checkbox" value="checkbox" />
+                                        </div></td>
+                                        <td width="3%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">序号</span></div></td>
+                                        <td width="8%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户名</span></div></td>
+                                        <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户密码</span></div></td>
+                                        <td width="13%" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">手机号码</span></div></td>
+                                        <td width="16%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户地址</span></div></td>
+                                        <td width="13%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户邮箱</span></div></td>
+                                        <td width="8%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">用户身份</span></div></td>
+                                        <td width="15%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+                                    </tr>
+
+
+
+
+                                    <!--/*@thymesVar id="userslist" type=""*/-->
+                                    <tr th:each="emp : ${userslist}">
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center">
+                                            <input type="checkbox" name="checkbox3" value="checkbox" />
+                                        </div></td>
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
+                                            <div align="center"><!--/*@thymesVar id="id" type=""*/-->
+                                                <p  th:id="'idid'+${emp.id}" th:text="${emp.id}">12</p></div>
+                                        </div></td>
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p  th:text="${emp.nickname}">海<p/></span></div></td>
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.password}">12</p></span></div></td>
+                                        <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.mobile}">18</p></span></div></td>
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.address}">1453</p></span></div></td>
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.mail}">1453</p></span></div></td>
+                                        <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.role}">1453</p></span></div></td>
+                                        <td height="20" bgcolor="#FFFFFF">
+                                            <div align="center">
+                            <span class="STYLE4">
+                            <img src="/tab/images/edt.gif" width="16" height="16" />
+                            <input  type="button" value="编辑" th:onclick="edituser([[${emp.id}]],[[${emp.nickname}]],[[${emp.password}]],[[${emp.mobile}]],[[${emp.role}]],[[${emp.address}]],[[${emp.mail}]]);" />&nbsp; &nbsp;
+                            <img src="/tab/images/del.gif" width="16" height="16" />
+                            <input  type="button" value="删除" th:onclick="deleteuser([[${emp.id}]]);" />
+                            </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+                                </table></td>
+                                <td width="8" background="/tab/images/tab_15.gif">&nbsp;</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+
+                </td>
+            </tr>
+            <tr>
+                <td height="35" background="/tab/images/tab_19.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="12" height="35"><img src="/tab/images/tab_18.gif" width="12" height="35" /></td>
+                        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="STYLE4">&nbsp;&nbsp;共有 120 条记录，当前第 1/10 页</td>
+                                <td><table border="0" align="right" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="40"><img src="/tab/images/first.gif" width="37" height="15" /></td>
+                                        <td width="45"><img src="/tab/images/back.gif" width="43" height="15" /></td>
+                                        <td width="45"><img src="/tab/images/next.gif" width="43" height="15" /></td>
+                                        <td width="40"><img src="/tab/images/last.gif" width="37" height="15" /></td>
+                                        <td width="100"><div align="center"><span class="STYLE1">转到第
+                    <input name="textfield" type="text" size="4" style="height:12px; width:20px; border:1px solid #999999;" />
+                    页 </span></div></td>
+                                        <td width="40"><img src="/tab/images/go.gif" width="37" height="15" /></td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                        </table></td>
+                        <td width="16"><img src="/tab/images/tab_20.gif" width="16" height="35" /></td>
+                    </tr>
+                </table></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <!--  左边菜单栏 -->
+
+
+    <style type="text/css">
+        <!--
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+        .STYLE6{
+            font-size: 12px;
+            color: #FFFFFF;
+        }
+        .STYLE8 {
+            font-size: 12px;
+            color: #033d61;
+        }
+        -->
+    </style>
+    <style type="text/css">
+        .menu_title SPAN {
+            FONT-WEIGHT: bold; LEFT: 3px; COLOR: #ffffff; POSITION: relative; TOP: 2px
+        }
+        .menu_title2 SPAN {
+            FONT-WEIGHT: bold; LEFT: 3px; COLOR: #FFCC00; POSITION: relative; TOP: 2px
+        }
+
+    </style>
+    <script>
+        var he=document.body.clientHeight-105
+        document.write("<div id=tt style=height:"+he+";overflow:hidden>")
+    </script>
+
+    <table width="165" height="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td height="28" background="images/main_40.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="19%">&nbsp;</td>
+                    <td width="81%" height="20"><span class="STYLE6">管理菜单</span></td>
+                </tr>
+            </table></td>
+        </tr>
+        <tr>
+            <td valign="top"><table width="151" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td height="23" background="images/main_47.gif" id="imgmenu1" class="menu_title" onMouseOver="this.className='menu_title2';" onClick="showsubmenu(1)" onMouseOut="this.className='menu_title';" style="cursor:hand"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="18%">&nbsp;</td>
+                                    <td width="82%" class="STYLE6">信息中心</td>
+                                </tr>
+                            </table></td>
+                        </tr>
+                        <tr>
+                            <td background="images/main_51.gif" id="submenu1">
+                                <div class="sec_menu" >
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td width="16%" height="25"><div align="center"><img src="images/left.gif" width="10" height="10" /></div></td>
+                                                    <td width="84%" height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td height="20" style="cursor:hand" onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "onmouseout="this.style.borderStyle='none'"><span class="STYLE3"><button onclick="changePage('/showalluserlist')"> 用户管理</button></span></td>
+                                                        </tr>
+                                                    </table></td>
+                                                </tr>
+
+
+
+                                                <tr>
+                                                    <td height="23"><div align="center"><img src="images/left.gif" width="10" height="10" /></div></td>
+                                                    <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td height="20" style="cursor:hand" onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "onmouseout="this.style.borderStyle='none'"><span class="STYLE3"><a href="adduser.html" target='I2'><button> 添加用户</button></span></td>
+                                                        </tr>
+                                                    </table></td>
+                                                </tr>
+                                            </table></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="5"><img src="images/main_52.gif" width="151" height="5" /></td>
+                                        </tr>
+                                    </table></div></td>
+                        </tr>
+
+                    </table></td>
+                </tr>
+                <tr>
+                    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td height="23" background="images/main_47.gif" id="imgmenu2" class="menu_title" onmouseover="this.className='menu_title2';" onclick="showsubmenu(2)" onmouseout="this.className='menu_title';" style="cursor:hand"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="18%">&nbsp;</td>
+                                    <td width="82%" class="STYLE6">销售中心</td>
+                                </tr>
+                            </table></td>
+                        </tr>
+                        <tr>
+                            <td background="images/main_51.gif" id="submenu2"><div class="sec_menu" >
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td><table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td height="23"><div align="center"><img src="images/left.gif" width="10" height="10" /></div></td>
+                                                <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td height="20" style="cursor:hand" onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "onmouseout="this.style.borderStyle='none'"><span class="STYLE3"><button onclick="changePage('/allgoodslist')">商品管理</button></span></td>
+                                                    </tr>
+                                                </table></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="23"><div align="center"><img src="images/left.gif" width="10" height="10" /></div></td>
+                                                <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td height="20" style="cursor:hand" onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "onmouseout="this.style.borderStyle='none'"><span class="STYLE3"><a href="addgoods.html" target='I2'><button> 添加商品</button></span></td>
+                                                    </tr>
+                                                </table></td>
+
+                                            <tr>
+                                                <td height="23"><div align="center"><img src="images/left.gif" width="10" height="10" /></div></td>
+                                                <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td height="20" style="cursor:hand" onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "onmouseout="this.style.borderStyle='none'"><span class="STYLE3"><button onclick="changePage('/nodeliverygoodsordershow')">未发订单</button></span></td>
+                                                    </tr>
+                                                </table></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="23"><div align="center"><img src="images/left.gif" width="10" height="10" /></div></td>
+                                                <td height="23"><table width="95%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr>
+                                                        <td height="20" style="cursor:hand" onmouseover="this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#7bc4d3'; "onmouseout="this.style.borderStyle='none'"><span class="STYLE3"><button onclick="changePage('/deliverygoodsordershow')">已发订单</button></span></td>
+                                                    </tr>
+                                                </table></td>
+                                            </tr>
+                                        </table></td>
+                                    </tr>
+                                    <tr>
+                                        <td height="5"><img src="images/main_52.gif" width="151" height="5" /></td>
+                                    </tr>
+                                </table>
+                            </div></td>
+                        </tr>
+                    </table>          </td>
+                </tr>
+            </table></td>
+        </tr>
+
+    </table>
+
+    <script>
+
+
+
+
+        function showsubmenu(sid)
+        {
+            whichEl = eval("submenu" + sid);
+            imgmenu = eval("imgmenu" + sid);
+            if (whichEl.style.display == "none")
+            {
+                eval("submenu" + sid + ".style.display=\"\";");
+                imgmenu.background="images/main_47.gif";
+            }
+            else
+            {
+                eval("submenu" + sid + ".style.display=\"none\";");
+                imgmenu.background="images/main_48.gif";
+            }
+        }
+
+    </script>
+
+</div>
+</body>
+</html>

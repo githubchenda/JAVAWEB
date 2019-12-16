@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表信息</title>
+
+    <script type="text/javascript">
+        function addtocartfun(data1,data2,data3,data4) {
+
+            /*alert(data2);
+            alert(data3);
+            alert(data4);*/
+            window.location.href = '/addtomycart?shgoodsid='+data1+'&shgoodsname='+data2+'&shgoodsprice='+data3+'&shgoodsdescribe='+data4;
+           // window.location.href = '/addtomycart?shgoodsid='+data1+'&shgoodsname='+data2+'&shgoodsprice='+data3+'&shgoodsdescribe='+data4;
+        }
+
+
+    </script>
+</head>
+<body>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="8" background="/tab/images/tab_12.gif">&nbsp;</td>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+            <tr>
+
+                <td width="4%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品ID</span></div></td>
+                <td width="15%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品名称</span></div></td>
+                <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">价格(元）</span></div></td>
+                <td width="10%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">库存（个）</span></div></td>
+                <td width="40%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">描述</span></div></td>
+
+                <td width="20%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+            </tr>
+
+
+
+
+
+            <tr th:each="emp : ${goodslist}">
+
+                <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE1">
+                    <div align="center"><!--/*@thymesVar id="id" type=""*/-->
+                        <p  th:id="'idid'+${emp.goodsid}" th:text="${emp.goodsid}">12</p></div>
+                </div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p  th:text="${emp.goodsname}">海<p/></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.goodsprice}">12</p></span></div></td>
+                <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.stock}">18</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.goodsdescribe}">1453</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF">
+                    <div align="center">
+                            <span class="STYLE4">
+
+                            <input  type="button" value="加入购物篮" th:onclick="addtocartfun([[${emp.goodsid}]],[[${emp.goodsname}]],[[${emp.goodsprice}]],[[${emp.goodsdescribe}]]);" />
+                            </span>
+                    </div>
+                </td>
+            </tr>
+
+
+        </table></td>
+        <td width="8" background="/tab/images/tab_15.gif">&nbsp;</td>
+    </tr>
+</table>
+
+
+</body>
+</html>

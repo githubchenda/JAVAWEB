@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>发货成功</title>
+    <link href="/css/show.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script>
+        //alert("删除成功");
+        //var linkid=[[${id}]];
+        alert("发货成功");
+        self.location=document.referrer;
+
+        //window.location.href = '/show300?name=boss&password=123';
+    </script>
+
+</head>
+<body>
+
+
+<!--/*@thymesVar id="uid" type="java"*/-->
+<p th:text="'商品ID：' + ${orderid}"></p>
+
+
+
+
+
+
+</body>
+</html>

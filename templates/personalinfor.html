@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户信息编辑页面</title>
+    <link href="/css/show.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+
+<h1>用户详细信息</h1>
+<!--/*@thymesVar id="userid" type="java"*/-->
+<tr>
+    <td><p th:text="'用户ID：' + ${userid}"></p></td>
+    <td><p th:text="'用户姓名：' + ${username}"></p></td>
+    <td><p th:text="'用户密码：' + ${userpassword}"></p></td>
+    <td><p th:text="'用户手机：' + ${usermobile}"></p></td>
+    <td><p th:text="'用户身份：' + ${userrole}"></p></td>
+
+</tr>
+
+<!--/*@thymesVar id="username" type="java"*/-->
+
+<!--/*@thymesVar id="userpassword" type="java"*/-->
+
+<!--/*@thymesVar id="usermobile" type="java"*/-->
+
+<!--/*@thymesVar id="userrole" type="java"*/-->
+
+
+
+<div id="update">
+    <h1>用户信息编辑</h1>
+    <form action="/updateworkerinfo" method="get">
+        <input type="text" required="required" readonly unselectable="on" placeholder="用户ID" th:value="${userid}" name="updateid"></input>
+        <input type="text" required="required" placeholder="用户姓名" th:value="${username}" name="updatename"></input>
+        <input type="text" required="required" placeholder="用户密码" th:value="${userpassword}" name="updatepassword"></input>
+        <input type="text" required="required" placeholder="用户手机" th:value="${usermobile}" name="updatemobile"></input>
+        <input type="text" required="required" placeholder="用户角色" th:value="${userrole}" name="updaterole"></input>
+        <button class="but" type="submit" name="update">确认修改</button>
+    </form>
+</div>
+
+</body>
+</html>

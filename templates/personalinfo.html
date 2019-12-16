@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>个人信息页面</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <style>
+        .formCenter {
+
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body >
+<div style="text-align:center; vertical-align:middel;">
+    <h1>个人信息</h1>
+    <form action="/updatepersonalinfo" method="get" style="text-align:center; vertical-align:middel;">
+        <table class="formCenter">
+            <tr>
+                <td><font color="red">*</font>用户手机:</td>
+                <td><input type="text" required="required" placeholder="用户手机" th:value="${usermobile}" name="updatemobile"></input></td>
+            </tr>
+
+            <tr>
+                <td><font color="red">*</font>用户邮箱:</td>
+                <td><input type="text" required="required" placeholder="用户邮箱" th:value="${usermail}" name="updatemail"></input></td>
+            </tr>
+            <tr>
+                <td><font color="red">*</font>用户地址:</td>
+                <td><input type="text" required="required" placeholder="用户地址" style="height: 30px" th:value="${useraddress}" name="updateaddress"></input></td>
+            </tr>
+
+        </table>
+        <tr>
+            <td> <button class="but" type="submit" name="update" >确认修改</button></td>
+        </tr>
+    </form>
+
+</div>
+
+</body>
+</html>

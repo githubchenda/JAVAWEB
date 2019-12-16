@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        function buildshoppingorder(data1,data2,data3,data4,data5,data6) {
+
+            window.location.href = '/buildorder?shcartid='+data1+'&shgoodsid='+data2+'&shgoodsname='+data3+'&customername='+data4+'&shgoodsprice='+data5+'&shgoodsdescribe='+data6;
+        }
+
+        function deleteshopcart(data) {
+            //alert("成功删除");
+            window.location.href = '/deleteshopcartitem?shcartid='+data;
+            //alert("name="+data2);
+           // window.location.href = '/edi?id='+data1+'&name='+data2+'&password='+data3+'&mobile='+data4+'&role='+data5;
+            //window.location.href = '/show600?name='+data;
+        }
+    </script>
+</head>
+<body>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"  >
+    <tr>
+        <td width="8" background="/tab/images/tab_12.gif">&nbsp;</td>
+        <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+            <tr>
+
+                <td width="15%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品名称</span></div></td>
+                <td width="15%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品价格</span></div></td>
+                <td width="35%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">商品描述</span></div></td>
+                <td width="30%" height="22" background="/tab/images/bg.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"></span>基本操作</div></td>
+            </tr>
+
+
+
+
+
+            <!--/*@thymesVar id="userslist" type=""*/-->
+            <tr th:each="emp : ${shopcartlist}">
+
+
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p  th:text="${emp.shgoodsname}">海<p/></span></div></td>
+                <td height="20" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.shgoodsprice}">12</p></span></div></td>
+                <td bgcolor="#FFFFFF"><div align="center"><span class="STYLE1"><p th:text="${emp.shgoodsdescribe}">18</p></span></div></td>
+                <td height="20" bgcolor="#FFFFFF">
+                    <div align="center">
+                            <span class="STYLE4">
+                            <img src="/tab/images/edt.gif" width="16" height="16" />
+                            <input  type="button" value="付款" th:onclick="buildshoppingorder([[${emp.shcartid}]],[[${emp.shgoodsid}]],[[${emp.shgoodsname}]],[[${emp.customername}]],[[${emp.shgoodsprice}]],[[${emp.shgoodsdescribe}]]);" />&nbsp; &nbsp;
+                            <img src="/tab/images/del.gif" width="16" height="16" />
+                            <input  type="button" value="删除" th:onclick="deleteshopcart([[${emp.shcartid}]]);" />
+                            </span>
+                    </div>
+                </td>
+            </tr>
+
+
+        </table></td>
+        <td width="8" background="/tab/images/tab_15.gif">&nbsp;</td>
+    </tr>
+</table>
+
+
+
+
+
+</body>
+</html>

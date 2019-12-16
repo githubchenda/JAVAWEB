@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户信息编辑页面</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <style>
+        .formCenter {
+
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body style="text-align:center; vertical-align:middel;">
+<div  >
+    <h1>用户信息编辑</h1>
+        <form action="/updateworkerinfo" method="get">
+            <table class="formCenter">
+                <tr >
+                    <td><font color="red">*</font>用户ID：</td>
+                    <td><input type="text" required="required" readonly unselectable="on" placeholder="用户ID" th:value="${userid}" name="updateid"></input></td>
+                </tr>
+
+
+                <tr>
+                    <td><font color="red">*</font>用户姓名：</td>
+                    <td><input type="text" required="required" placeholder="用户姓名" th:value="${username}" name="updatename"></input></td>
+                </tr>
+
+                <tr>
+                    <td><font color="red">*</font>用户密码:</td>
+                    <td><input type="text" required="required" placeholder="用户密码" th:value="${userpassword}" name="updatepassword"></input></td>
+                </tr>
+                <tr>
+                    <td><font color="red">*</font>用户手机:</td>
+                    <td><input type="text" required="required" placeholder="用户手机" th:value="${usermobile}" name="updatemobile"></input></td>
+                </tr>
+                <tr>
+                    <td><font color="red">*</font>用户角色:</td>
+                    <td><input type="text" required="required" placeholder="用户角色" th:value="${userrole}" name="updaterole"></input></td>
+                </tr>
+
+                <tr>
+                    <td><font color="red">*</font>用户邮箱:</td>
+                    <td><input type="text" required="required" placeholder="用户邮箱" th:value="${usermail}" name="updatemail"></input></td>
+                </tr>
+                <tr>
+                    <td><font color="red">*</font>用户地址:</td>
+                    <td><input type="text" required="required" placeholder="用户地址" th:value="${useraddress}" name="updateaddress"></input></td>
+                </tr>
+
+            </table>
+            <tr>
+                <td> <button class="but" type="submit" name="update" >提交</button></td>
+            </tr>
+    </form>
+
+</div>
+
+</body>
+</html>

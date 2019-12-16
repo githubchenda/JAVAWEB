@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>商品信息编辑</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <style>
+        .formCenter {
+
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body style="text-align:center; vertical-align:middel;">
+<h1>商品信息编辑</h1>
+<form action="/updategoodsinfo" method="get">
+    <table class="formCenter">
+        <tr >
+            <td><font color="red">*</font>商品ID：</td>
+            <td><input type="text" required="required" readonly unselectable="on" placeholder="商品ID" th:value="${goodsid}" name="updategoodsid"></input></td>
+        </tr>
+
+
+        <tr>
+            <td><font color="red">*</font>商品姓名：</td>
+            <td><input type="text" required="required" placeholder="商品姓名" th:value="${goodsname}" name="updategoodsname"></input></td>
+        </tr>
+
+        <tr>
+            <td><font color="red">*</font>商品价格（元）:</td>
+            <td><input type="text" required="required" placeholder="商品价格（元）" th:value="${goodsprice}" name="updategoodsprice"></input></td>
+        </tr>
+        <tr>
+            <td><font color="red">*</font>库存（个）:</td>
+            <td><input type="text" required="required" placeholder="库存（个）" th:value="${stock}" name="updatestock"></input></td>
+        </tr>
+        <tr>
+            <td><font color="red">*</font>描述:</td>
+            <td><input type="text" required="required" placeholder="描述" th:value="${goodsdescribe}" name="updategoodsdescribe"></input></td>
+        </tr>
+        <tr>
+            <td><font color="red">*</font>类别:</td>
+            <td><input type="text" required="required" placeholder="类别" th:value="${goodsclass}" name="updategoodsclass"></input></td>
+        </tr>
+    </table>
+    <tr>
+        <td> <button class="but" type="submit" name="update" >提交</button></td>
+    </tr>
+</form>
+
+
+
+</body>
+</html>

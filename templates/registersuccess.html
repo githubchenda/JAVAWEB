@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户注册成功</title>
+    <link href="/css/show.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script>
+        //alert("删除成功");
+        alert("用户注册成功");
+        window.location.href = '/login.html';
+    </script>
+
+</head>
+<body>
+
+
+<!--/*@thymesVar id="uid" type="java"*/-->
+<p th:text="'用户ID：' + ${id}"></p>
+
+
+
+
+
+
+</body>
+</html>
