@@ -1,0 +1,80 @@
+@charset "utf-8";
+html {
+    background-image: url("/static/images/bg.jpg")
+}
+
+body {
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+#title h3 {
+    color: rgba(255, 240, 216, 1.00);
+    font-family: "黑体";
+    font-size: 2em;
+    margin: 0px;
+    font-weight: bolder;
+}
+
+#title h1 {
+    font-family: "华文行楷", "黑体", "楷体", "华文隶书", "隶书";
+    font-size: 3.5em;
+    margin: 10px;
+    margin-left: 0px;
+    color: rgba(255, 255, 255, 1.00);
+    text-shadow: 5px 5px 10px rgba(62, 62, 62, 1.00), 0px 0px 5px rgba(0, 0, 0, 1.00);
+    font-weight: lighter;
+}
+
+#title {
+    background: rgba(0, 179, 255, 1.00);
+    width: 100%;
+    margin: 0px;
+    padding-top: 20px;
+    padding-bottom: 1px;
+    padding-left: 6%;
+    box-shadow: 0px 8px 16px rgba(0, 179, 255, 1.00);
+    width: auto;
+    text-align: left;
+}
+
+#login-div {
+    width: 50%;
+    margin: 0px auto;
+    margin-top: 3%;
+    text-align: center;
+}
+
+form {
+    background: rgb(131, 199, 219);
+    box-shadow: 3px 3px 12px rgb(38, 81, 102);
+    min-width: 400px;
+    margin-top: 5px;
+    padding: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    line-height: 0px;
+    border-radius: 10px;
+}
+
+form strong {
+    font-family: "幼圆", "微软雅黑";
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    position: relative;
+    bottom: 10px;
+}
+
+#submit {
+    padding: 10px;
+    margin-left: 10px;
+    background: rgb(189, 247, 255);
+    position: relative;
+    border-radius: 10px;
+    bottom: 10px;
+    align-self: right;
+    font-family: "幼圆";
+    font-size: 1.2em;
+}
